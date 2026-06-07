@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "id": "f2a23075-2216-4a6f-8ed0-294747df4ad9",
+      "title": "Build B-Material apk release",
+      "commands": "cd D:\\Desktop\\AndroidProjects\\B-Material\ngradlew clean assembleRelease\nexplorer app\\build\\outputs\\apk\\release"
+    },
+    {
+      "id": "82c3262c-ce67-4fed-8e6b-806d5b8171c6",
+      "title": "Install AAECarMedia apk",
+      "commands": "# Khối lệnh này hiện tại chạy có thể chưa thành công!\nadb root\npowershell -NoProfile -Command \"Start-Sleep -Seconds 2\"\n\nadb remount\npowershell -NoProfile -Command \"Start-Sleep -Seconds 2\"\n\nadb disable-verity\n\nadb reboot\nadb wait-for-device\n\n\n\nadb shell rm -f /system/priv-app/AAECarMediaApp/AAECarMediaApp.apk\n\nadb push \"D:/Downloads/AAECarMediaApp.apk\" /system/priv-app/AAECarMediaApp/AAECarMediaApp.apk\n\nadb shell chmod 755 /system/priv-app/AAECarMediaApp\nadb shell chmod 644 /system/priv-app/AAECarMediaApp/AAECarMediaApp.apk\n\nadb reboot\nadb wait-for-device\n\nadb root\npowershell -NoProfile -Command \"Start-Sleep -Seconds 2\"\n\nadb remount\npowershell -NoProfile -Command \"Start-Sleep -Seconds 2\"\n\nadb shell chmod 755 /system/priv-app/AAECarMediaApp\nadb shell chmod 644 /system/priv-app/AAECarMediaApp/AAECarMediaApp.apk"
+    },
+    {
+      "id": "56cca45c-53ad-4126-a954-9d6f34f5cf0f",
+      "title": "Turn on Android Emulator",
+      "commands": "start \"\" \"C:/Users/husem/AppData/Local/Android/Sdk/emulator/emulator.exe\" -avd Automotive_Large_Portrait -writable-system"
+    }
+  ]
+}
